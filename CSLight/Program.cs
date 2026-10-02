@@ -10,8 +10,19 @@ namespace CSLight
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, world!");
-            Console.ReadKey();
+            string firstName = "Nikita";
+            string lastName = "Gogolev";
+            int age = 35;
+            char sex = 'M';
+            string nativeLanguage = "Russian";
+            string city = "Cherepovets";
+
+            bool hasCars = true;
+            int countCars = 1;
+
+            bool hasPets = false;
+            int countPets = 0;
+
         }
     }
 }
