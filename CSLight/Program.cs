@@ -10,7 +10,15 @@ namespace CSLight
     {
         static void Main(string[] args)
         {
-            
+            string stopWord = "exit";
+            string userInput = "";
+
+            while (userInput != stopWord)
+            {
+                Console.Write("Введите строку: ");
+                userInput = Console.ReadLine();
+                Console.WriteLine($"Вы ввели {userInput}");
+            }
         }
     }
 }
