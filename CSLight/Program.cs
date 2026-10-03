@@ -8,11 +8,11 @@ namespace CSLight
 {
     internal class Program
     {
-        const string helloCommand = "hello";
-        const string fixCommand = "fix";
-        const string randomCommand = "random";
-        const string clearCommand = "clear";
-        const string exitCommand = "exit";
+        const string HelloCommand = "hello";
+        const string FixCommand = "fix";
+        const string RandomCommand = "random";
+        const string ClearCommand = "clear";
+        const string ExitCommand = "exit";
 
         static void Main(string[] args)
         {
@@ -26,29 +26,29 @@ namespace CSLight
             while (!isFinish)
             {
                 Console.WriteLine("\nВведите команду:\n" +
-                    $"{helloCommand}: Приветственное сообщение\n" +
-                    $"{fixCommand}: Испрвавить ошибки\n" +
-                    $"{randomCommand}: Вывести случайнрое число\n" +
-                    $"{clearCommand}: очистить консоль\n" +
-                    $"{exitCommand}: Выход");
+                    $"{HelloCommand}: Приветственное сообщение\n" +
+                    $"{FixCommand}: Испрвавить ошибки\n" +
+                    $"{RandomCommand}: Вывести случайнрое число\n" +
+                    $"{ClearCommand}: очистить консоль\n" +
+                    $"{ExitCommand}: Выход");
                 Console.Write("Команда: ");
                 userInput = Console.ReadLine();
 
                 switch(userInput)
                 {
-                    case helloCommand:
+                    case HelloCommand:
                         Console.WriteLine("Добро пожаловать к нам!");
                         break;
-                    case fixCommand:
+                    case FixCommand:
                         Console.WriteLine("Все ошибки исправлены!\nПриятного пользования");
                         break;
-                    case randomCommand:
+                    case RandomCommand:
                         Console.WriteLine($"Ваше случайное число {random.Next(minNumber, maxNumber)}");
                         break;
-                    case clearCommand:
+                    case ClearCommand:
                         Console.Clear();
                         break;
-                    case exitCommand:
+                    case ExitCommand:
                         isFinish = true;
                         break;
                     default:
