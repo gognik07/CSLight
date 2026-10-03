@@ -22,7 +22,7 @@ namespace CSLight
 
             for (int i = 0; i <= randomNumber; i++)
             {
-                if (i > 0 && (i / divThree == 0 || i / divFive == 0))
+                if (i > 0 && (i % divThree == 0 || i % divFive == 0))
                 {
                     sum += i;
                 }
