@@ -15,12 +15,14 @@ namespace CSLight
             int maxNumber = 101;
             int randomNumber = rand.Next(minNumber, maxNumber);
             int sum = 0;
+            int divThree = 3;
+            int divFive = 5;
 
             Console.WriteLine($"Выбрано число {randomNumber}");
 
             for (int i = 0; i <= randomNumber; i++)
             {
-                if (i > 0 && (i % 3 == 0 || i % 5 == 0))
+                if (i > 0 && (i / divThree == 0 || i / divFive == 0))
                 {
                     sum += i;
                 }
