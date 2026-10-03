@@ -8,41 +8,47 @@ namespace CSLight
 {
     internal class Program
     {
+        const string helloCommand = "hello";
+        const string fixCommand = "fix";
+        const string randomCommand = "random";
+        const string clearCommand = "clear";
+        const string exitCommand = "exit";
+
         static void Main(string[] args)
         {
             bool isFinish = false;
             int minNumber = 0;
             int maxNumber = 101;
-            Random rand = new Random();
+            Random random = new Random();
             string userInput;
-
+                        
             Console.WriteLine("Добро пожаловать в консоль!");
             while (!isFinish)
             {
                 Console.WriteLine("\nВведите команду:\n" +
-                    "hello: Приветственное сообщение\n" +
-                    "fix: Испрвавить ошибки\n" +
-                    "random: Вывести случайнрое число\n" +
-                    "clear: очистить консоль\n" +
-                    "exit: Выход");
+                    $"{helloCommand}: Приветственное сообщение\n" +
+                    $"{fixCommand}: Испрвавить ошибки\n" +
+                    $"{randomCommand}: Вывести случайнрое число\n" +
+                    $"{clearCommand}: очистить консоль\n" +
+                    $"{exitCommand}: Выход");
                 Console.Write("Команда: ");
                 userInput = Console.ReadLine();
 
                 switch(userInput)
                 {
-                    case "hello":
+                    case helloCommand:
                         Console.WriteLine("Добро пожаловать к нам!");
                         break;
-                    case "fix":
+                    case fixCommand:
                         Console.WriteLine("Все ошибки исправлены!\nПриятного пользования");
                         break;
-                    case "random":
-                        Console.WriteLine($"Ваше случайное число {rand.Next(minNumber, maxNumber)}");
+                    case randomCommand:
+                        Console.WriteLine($"Ваше случайное число {random.Next(minNumber, maxNumber)}");
                         break;
-                    case "clear":
+                    case clearCommand:
                         Console.Clear();
                         break;
-                    case "exit":
+                    case exitCommand:
                         isFinish = true;
                         break;
                     default:
