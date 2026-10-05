@@ -12,16 +12,16 @@ namespace CSLight
         {
             Random random = new Random();
             int minValue = 0;
-            int maxValue = 101;
-            int randomNumber = random.Next(minValue, maxValue);
-            int baseTwo = 2;
+            int maxValue = 100;
+            int randomNumber = random.Next(minValue, maxValue + 1);
+            int basePower = 2;
             int power = 0;
             int currentValue = 1;
 
-            while (currentValue < randomNumber)
+            while (currentValue <= randomNumber)
             {
                 power++;
-                currentValue *= baseTwo;
+                currentValue *= basePower;
             }
 
             Console.WriteLine($"Для заданого числа {randomNumber} нужна степень двойки {power} = {currentValue}");
