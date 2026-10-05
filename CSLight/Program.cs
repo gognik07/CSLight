@@ -12,10 +12,10 @@ namespace CSLight
         {
             Random random = new Random();
             int minValue = 10;
-            int maxValue = 26;
+            int maxValue = 25;
             int start = 50;
             int end = 150;
-            int selectedNumber = random.Next(minValue, maxValue);
+            int selectedNumber = random.Next(minValue, maxValue + 1);
             int countMultiples = 0;
 
             for (int i = selectedNumber; i <= end; i += selectedNumber)
