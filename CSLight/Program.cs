@@ -94,7 +94,7 @@ namespace CSLight
                         break;
                 }
 
-                heroHealth -= random.Next(minBossAttack, maxBossAttack);
+                heroHealth -= random.Next(minBossAttack, maxBossAttack + 1);
             }
 
             if (heroHealth <= 0 && bossHealth <= 0)
