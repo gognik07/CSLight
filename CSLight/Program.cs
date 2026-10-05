@@ -15,21 +15,19 @@ namespace CSLight
             int maxValue = 26;
             int start = 50;
             int end = 150;
-            int n = random.Next(minValue, maxValue);
-            int currentN = n;
+            int selectedNumber = random.Next(minValue, maxValue);
             int countMultiples = 0;
 
-            while (currentN <= end)
+            for (int i = selectedNumber; i <= end; i += selectedNumber)
             {
-                if (currentN >= start && currentN <= end)
+                if (i >= start)
                 {
                     countMultiples++;
                 }
-
-                currentN += n;
             }
 
-            Console.WriteLine($"Числу {n} есть {countMultiples} кратных чисел");
+            Console.WriteLine($"Числу {selectedNumber} есть {countMultiples} кратных чисел");
+
         }
     }
 }
