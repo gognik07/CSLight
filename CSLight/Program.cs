@@ -13,23 +13,25 @@ namespace CSLight
             string password = "qwert54321";
             string userInput;
             int countTries = 3;
+            bool isFail = true;
 
-            while (countTries-- > 0)
+            for (int i = 0; i < countTries; i++)
             {
                 Console.Write("Введите пароль: ");
                 userInput = Console.ReadLine();
                 if (userInput == password)
                 {
                     Console.WriteLine("Секреты!");
+                    isFail = false;
                     break;
                 }
                 else
                 {
-                    Console.WriteLine("Пароль неверный!");
+                    Console.WriteLine("Пароль неверный!");                    
                 }
             }
 
-            if (countTries < 0)
+            if (isFail)
             {
                 Console.WriteLine("Доступ заблокирован");
             }
