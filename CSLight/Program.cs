@@ -9,27 +9,28 @@ namespace CSLight
     internal class Program
     {
 
-        private const string ConvertRubToUsdCommand = "1";
-        private const string ConvertRubToEuroCommand = "2";
-        private const string ConvertUsdToRubCommand = "3";
-        private const string ConvertUsdToEuroCommand = "4";
-        private const string ConvertEuroToRubCommand = "5";
-        private const string ConvertEuroToUsdCommand = "6";
-        private const string ExitCommand = "7";
-
         static void Main(string[] args)
         {
-            float rubToUsd = 85.1f;
-            float rubToEuro = 97.2f;
 
-            float usdToRub = 0.012f;
-            float usdToEuro = 0.89f;
+            const string ConvertRubelToDollarCommand = "1";
+            const string ConvertRubelToEuroCommand = "2";
+            const string ConvertDollarToRubelCommand = "3";
+            const string ConvertDollarToEuroCommand = "4";
+            const string ConvertEuroToRubelCommand = "5";
+            const string ConvertEuroToDollarCommand = "6";
+            const string ExitCommand = "7";
 
-            float euroToRub = 0.011f;
-            float euroToUsd = 1.13f;
+            float rubelToDollar = 85.1f;
+            float rubelToEuro = 97.2f;
 
-            float balanceRub = 5000;
-            float balanceUsd = 400;
+            float dollarToRubel = 0.012f;
+            float dollarToEuro = 0.89f;
+
+            float euroToRubel = 0.011f;
+            float euroToDollar = 1.13f;
+
+            float balanceRubel = 5000;
+            float balanceDollar = 400;
             float balanceEuro = 0;
 
             string currentCommand;
@@ -39,89 +40,108 @@ namespace CSLight
             Console.WriteLine("Обмен валют!");
             
             bool isExit = false;
+
             while (!isExit)
             {
-                Console.WriteLine($"\nВаш баланс: {balanceRub} рублей, {balanceUsd} долларов, {balanceEuro} евро");
+                Console.WriteLine($"\nВаш баланс: {balanceRubel} рублей, {balanceDollar} долларов, {balanceEuro} евро");
                 Console.WriteLine("\nВыберите желаемое действие:" +
-                    $"\n{ConvertRubToUsdCommand} - Покупка долларов за рубли" +
-                    $"\n{ConvertRubToEuroCommand} - Покупка евро за рубли" +
-                    $"\n{ConvertUsdToRubCommand} - Покупка рублей за доллары" +
-                    $"\n{ConvertUsdToEuroCommand} - Покупка евро за доллары" +
-                    $"\n{ConvertEuroToRubCommand} - Покупка рублей за евро" +
-                    $"\n{ConvertEuroToUsdCommand} - Покупка долларов за евро" +
+                    $"\n{ConvertRubelToDollarCommand} - Покупка долларов за рубли" +
+                    $"\n{ConvertRubelToEuroCommand} - Покупка евро за рубли" +
+                    $"\n{ConvertDollarToRubelCommand} - Покупка рублей за доллары" +
+                    $"\n{ConvertDollarToEuroCommand} - Покупка евро за доллары" +
+                    $"\n{ConvertEuroToRubelCommand} - Покупка рублей за евро" +
+                    $"\n{ConvertEuroToDollarCommand} - Покупка долларов за евро" +
                     $"\n{ExitCommand} - Выход");
                 Console.Write("Команда: ");
                 currentCommand = Console.ReadLine();
 
-                if (currentCommand == ConvertRubToUsdCommand 
-                    || currentCommand == ConvertRubToEuroCommand
-                    || currentCommand == ConvertUsdToRubCommand
-                    || currentCommand == ConvertUsdToEuroCommand
-                    || currentCommand == ConvertEuroToRubCommand
-                    || currentCommand == ConvertEuroToUsdCommand
-                    )
-                {
-                    Console.Write("Введите сколько валюты хотите купить: ");
-                    countCurrency = Convert.ToSingle(Console.ReadLine());
-                    if (countCurrency < 0)
-                    {
-                        Console.WriteLine("Нельзя купить отрицательную сумму");
-                        continue;
-                    }
-                }
-
                 switch (currentCommand)
                 {
-                    case ConvertRubToUsdCommand:                       
-                        moneyForPurchase = countCurrency * rubToUsd;
-                        if (moneyForPurchase > balanceRub)
+                    case ConvertRubelToDollarCommand:
+                        Console.Write("Введите сколько валюты хотите купить: ");
+                        countCurrency = Convert.ToSingle(Console.ReadLine());
+                        if (countCurrency < 0)
+                        {
+                            Console.WriteLine("Нельзя купить отрицательную сумму");
+                            continue;
+                        }
+                        moneyForPurchase = countCurrency * rubelToDollar;
+                        if (moneyForPurchase > balanceRubel)
                         {
                             Console.WriteLine($"У вас недостаточно средств. Требуется {moneyForPurchase} рублей");
                         }
                         else
                         {
-                            balanceRub -= moneyForPurchase;
-                            balanceUsd += countCurrency;
+                            balanceRubel -= moneyForPurchase;
+                            balanceDollar += countCurrency;
                         }
                         break;
-                    case ConvertRubToEuroCommand:
-                        moneyForPurchase = countCurrency * rubToEuro;
-                        if (moneyForPurchase > balanceRub)
+                    case ConvertRubelToEuroCommand:
+                        Console.Write("Введите сколько валюты хотите купить: ");
+                        countCurrency = Convert.ToSingle(Console.ReadLine());
+                        if (countCurrency < 0)
+                        {
+                            Console.WriteLine("Нельзя купить отрицательную сумму");
+                            continue;
+                        }
+                        moneyForPurchase = countCurrency * rubelToEuro;
+                        if (moneyForPurchase > balanceRubel)
                         {
                             Console.WriteLine($"У вас недостаточно средств. Требуется {moneyForPurchase} рублей");
                         }
                         else
                         {
-                            balanceRub -= moneyForPurchase;
+                            balanceRubel -= moneyForPurchase;
                             balanceEuro += countCurrency;
                         }
                         break;
-                    case ConvertUsdToRubCommand:
-                        moneyForPurchase = countCurrency * usdToRub;
-                        if (moneyForPurchase > balanceUsd)
+                    case ConvertDollarToRubelCommand:
+                        Console.Write("Введите сколько валюты хотите купить: ");
+                        countCurrency = Convert.ToSingle(Console.ReadLine());
+                        if (countCurrency < 0)
+                        {
+                            Console.WriteLine("Нельзя купить отрицательную сумму");
+                            continue;
+                        }
+                        moneyForPurchase = countCurrency * dollarToRubel;
+                        if (moneyForPurchase > balanceDollar)
                         {
                             Console.WriteLine($"У вас недостаточно средств. Требуется {moneyForPurchase} долларов");
                         }
                         else
                         {
-                            balanceUsd -= moneyForPurchase;
-                            balanceRub += countCurrency;
+                            balanceDollar -= moneyForPurchase;
+                            balanceRubel += countCurrency;
                         }
                         break;
-                    case ConvertUsdToEuroCommand:
-                        moneyForPurchase = countCurrency * usdToEuro;
-                        if (moneyForPurchase > balanceUsd)
+                    case ConvertDollarToEuroCommand:
+                        Console.Write("Введите сколько валюты хотите купить: ");
+                        countCurrency = Convert.ToSingle(Console.ReadLine());
+                        if (countCurrency < 0)
+                        {
+                            Console.WriteLine("Нельзя купить отрицательную сумму");
+                            continue;
+                        }
+                        moneyForPurchase = countCurrency * dollarToEuro;
+                        if (moneyForPurchase > balanceDollar)
                         {
                             Console.WriteLine($"У вас недостаточно средств. Требуется {moneyForPurchase} долларов");
                         }
                         else
                         {
-                            balanceUsd -= moneyForPurchase;
+                            balanceDollar -= moneyForPurchase;
                             balanceEuro += countCurrency;
                         }
                         break;
-                    case ConvertEuroToRubCommand:
-                        moneyForPurchase = countCurrency * euroToRub;
+                    case ConvertEuroToRubelCommand:
+                        Console.Write("Введите сколько валюты хотите купить: ");
+                        countCurrency = Convert.ToSingle(Console.ReadLine());
+                        if (countCurrency < 0)
+                        {
+                            Console.WriteLine("Нельзя купить отрицательную сумму");
+                            continue;
+                        }
+                        moneyForPurchase = countCurrency * euroToRubel;
                         if (moneyForPurchase > balanceEuro)
                         {
                             Console.WriteLine($"У вас недостаточно средств. Требуется {moneyForPurchase} евро");
@@ -129,11 +149,18 @@ namespace CSLight
                         else
                         {
                             balanceEuro -= moneyForPurchase;
-                            balanceRub += countCurrency;
+                            balanceRubel += countCurrency;
                         }
                         break;
-                    case ConvertEuroToUsdCommand:
-                        moneyForPurchase = countCurrency * euroToUsd;
+                    case ConvertEuroToDollarCommand:
+                        Console.Write("Введите сколько валюты хотите купить: ");
+                        countCurrency = Convert.ToSingle(Console.ReadLine());
+                        if (countCurrency < 0)
+                        {
+                            Console.WriteLine("Нельзя купить отрицательную сумму");
+                            continue;
+                        }
+                        moneyForPurchase = countCurrency * euroToDollar;
                         if (moneyForPurchase > balanceEuro)
                         {
                             Console.WriteLine($"У вас недостаточно средств. Требуется {moneyForPurchase} евро");
@@ -141,7 +168,7 @@ namespace CSLight
                         else
                         {
                             balanceEuro -= moneyForPurchase;
-                            balanceUsd += countCurrency;
+                            balanceDollar += countCurrency;
                         }
                         break;
                     case ExitCommand:
