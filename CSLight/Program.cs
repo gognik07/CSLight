@@ -10,16 +10,16 @@ namespace CSLight
     {
         static void Main(string[] args)
         {
-            //константы
-            const string attackCommand = "attack";
-            const string fireBallCommand = "fireball";
-            const string fireBlastCommand = "blast";
-            const string cureCommand = "cure";
+            const string AttackCommand = "attack";
+            const string FireBallCommand = "fireball";
+            const string FireBlastCommand = "blast";
+            const string CureCommand = "cure";
+            const int FullHealth = 200;
+            const int FullMana = 100;
 
-            //статы для героя
-            int heroHealth = 200;
+            int heroHealth = FullHealth;
             int heroAttack = 35;
-            int heroMana = 100;
+            int heroMana = FullMana;
             int fireBlast = 70;
             int fireBallMana = 40;
             bool isActivatedFireBall = false;
@@ -27,13 +27,11 @@ namespace CSLight
             int cureMana = 50;
             int cureHealth = 100;
 
-            //статы для босса
             Random random = new Random();
             int minBossAttack = 40;
             int maxBossAttack = 100;
             int bossHealth = 150;
 
-            //переменные управления
             string inputCommand;
 
             while (heroHealth > 0 && bossHealth > 0)
@@ -48,19 +46,19 @@ namespace CSLight
                 }
 
                 Console.WriteLine("\nДоступные ходы" +
-                    $"\n{attackCommand} - атака" +
-                    $"\n{fireBallCommand} - Огненный шар(требуется маны {fireBallMana})" +
-                    $"\n{fireBlastCommand} - Взрыв" +
-                    $"\n{cureCommand} - Лечение(Восстанваливает {cureHealth} здоровья, {cureMana} маны)");
+                    $"\n{AttackCommand} - атака" +
+                    $"\n{FireBallCommand} - Огненный шар(требуется маны {fireBallMana})" +
+                    $"\n{FireBlastCommand} - Взрыв" +
+                    $"\n{CureCommand} - Лечение(Восстанваливает {cureHealth} здоровья, {cureMana} маны)");
                 Console.Write("Введите действие: ");
                 inputCommand = Console.ReadLine();
 
                 switch (inputCommand)
                 {
-                    case attackCommand:
+                    case AttackCommand:
                         bossHealth -= heroAttack;
                         break;
-                    case fireBallCommand:
+                    case FireBallCommand:
                         if (heroMana >= fireBallMana)
                         {
                             isActivatedFireBall = true;
@@ -72,8 +70,8 @@ namespace CSLight
                             Console.WriteLine("У вас недостаточно маны для создания огненного шара");
                         }
                         break;
-                    case fireBlastCommand:
-                        if (!isActivatedFireBall)
+                    case FireBlastCommand:
+                        if (isActivatedFireBall == false)
                         {
                             Console.WriteLine("У вас нет огненного шара для взрыва");
                         }
@@ -83,11 +81,21 @@ namespace CSLight
                             isActivatedFireBall = false;
                         }
                         break;
-                    case cureCommand:
+                    case CureCommand:
                         if (countCure > 0)
                         {
                             heroHealth += cureHealth;
+                            if (heroHealth > FullHealth)
+                            {
+                                heroHealth = FullHealth;
+                            }
+
                             heroMana += cureMana;
+                            if (heroMana > FullMana)
+                            {
+                                heroMana = FullMana;
+                            }
+
                             countCure--;
                         }
                         else
