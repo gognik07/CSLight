@@ -23,18 +23,16 @@ namespace CSLight
 
             string printName = symbol + name + symbol;
             columnCount = printName.Length;
+            string frame = "";
 
             for (int j = 0; j < columnCount; j++)
             {
-                Console.Write(symbol);
+                frame += symbol;
             }
 
-            Console.WriteLine($"\n{printName}");
-
-            for (int j = 0; j < columnCount; j++)
-            {
-                Console.Write(symbol);
-            }
+            Console.WriteLine(frame);
+            Console.WriteLine($"{printName}");
+            Console.WriteLine(frame);
         }
     }
 }
