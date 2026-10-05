@@ -8,13 +8,15 @@ namespace CSLight
 {
     internal class Program
     {
-        private const string attackCommand = "attack";
-        private const string fireBallCommand = "fireball";
-        private const string fireBlastCommand = "blast";
-        private const string cureCommand = "cure";
-
         static void Main(string[] args)
         {
+            //константы
+            const string attackCommand = "attack";
+            const string fireBallCommand = "fireball";
+            const string fireBlastCommand = "blast";
+            const string cureCommand = "cure";
+
+            //статы для героя
             int heroHealth = 200;
             int heroAttack = 35;
             int heroMana = 100;
@@ -25,17 +27,21 @@ namespace CSLight
             int cureMana = 50;
             int cureHealth = 100;
 
-            int bossHealth = 150;
-
+            //статы для босса
             Random random = new Random();
             int minBossAttack = 40;
-            int maxBossAttack = 101;
+            int maxBossAttack = 100;
+            int bossHealth = 150;
+
+            //переменные управления
             string inputCommand;
+
             while (heroHealth > 0 && bossHealth > 0)
             {
                 Console.WriteLine("\nНачало хода" +
                     $"\nВаше здоровье - {heroHealth}, ваша мана - {heroMana}, здоровье босса - {bossHealth}" +
                     $"\nДоступное количичество лечений - {countCure}");
+
                 if (isActivatedFireBall)
                 {
                     Console.WriteLine("Огненый шар готов");
