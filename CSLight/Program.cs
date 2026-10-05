@@ -10,7 +10,37 @@ namespace CSLight
     {
         static void Main(string[] args)
         {
-            
+            Random random = new Random();
+            int minValue = 0;
+            int maxValue = 9;
+            int[,] array = new int[3, 4];
+            int sum = 0;
+            int rowForSum = 1;
+            int multiplication = 1;
+            int columnForMultiplication = 0;
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    array[i, j] = random.Next(minValue, maxValue + 1);
+                    Console.Write(array[i, j] + " ");
+                    if (i == rowForSum)
+                    {
+                        sum += array[i, j];
+                    }
+
+                    if (j == columnForMultiplication)
+                    {
+                        multiplication *= array[i, j];
+                    }
+                }
+
+                Console.WriteLine();
+            }
+
+            Console.WriteLine($"\nСумма второй строки = {sum}, произведение первого столбца = {multiplication}");
         }
     }
 }
