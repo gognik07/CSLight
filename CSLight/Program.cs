@@ -24,29 +24,23 @@ namespace CSLight
             }
 
             Console.WriteLine("\n\nЛокальные максимумы: ");
-            for (int i = 0; i < array.Length; i++)
+
+            if (array[0] > array[1])
             {
-                if (i == 0)
+                Console.Write(array[0] + " ");
+            }
+
+            for (int i = 1; i < array.Length - 1; i++)
+            {
+                if (array[i] > array[i - 1] && array[i] > array[i + 1])
                 {
-                    if (array[i] > array[i + 1])
-                    {
-                        Console.Write(array[i] + " ");
-                    }
+                    Console.Write(array[i] + " ");
                 }
-                else if (i == array.Length - 1)
-                {
-                    if (array[i] > array[i - 1])
-                    {
-                        Console.Write(array[i] + " ");
-                    }
-                }
-                else
-                {
-                    if (array[i] > array[i - 1] && array[i] > array[i + 1])
-                    {
-                        Console.Write(array[i] + " ");
-                    }
-                }
+            }
+
+            if (array[array.Length - 1] > array[array.Length - 2])
+            {
+                Console.Write(array[array.Length - 1]);
             }
         }
     }
