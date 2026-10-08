@@ -30,20 +30,22 @@ namespace CSLight
             Console.Write($"{nameBar} [");
             Console.BackgroundColor = colorBar;
 
-            for (int i = 0; i < fillBar; i++)
-            {
-                Console.Write(symbolBar);
-            }
-
+            printBar(fillBar, symbolBar);
+            
             Console.BackgroundColor = defaultColor;
             char emptySymbol = ' ';
 
-            for (int i = 0; i < fullLenghtBar - fillBar; i++)
-            {
-                Console.Write(emptySymbol);
-            }
-
+            printBar(fullLenghtBar - fillBar, emptySymbol);
+            
             Console.Write("]");
+        }
+
+        private static void printBar(int length, char symbol)
+        {
+            for (int i = 0; i < length; i++)
+            {
+                Console.Write(symbol);
+            }
         }
     }
 }
